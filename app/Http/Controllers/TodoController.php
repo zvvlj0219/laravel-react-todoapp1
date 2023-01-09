@@ -37,7 +37,11 @@ class TodoController extends Controller
      */
     public function store(StoreTodoRequest $request)
     {
-        //
+        $todo = Todo::create($request->all());
+
+        return $todo
+        ? response()->json($todo, 201)
+        : response()->json([], 500);
     }
 
     /**
@@ -71,7 +75,11 @@ class TodoController extends Controller
      */
     public function update(UpdateTodoRequest $request, Todo $todo)
     {
-        //
+        $todo->title = $request->title;
+
+        return $todo->update()
+        ? response()->json($todo)
+        : response()->json([], 500);
     }
 
     /**
