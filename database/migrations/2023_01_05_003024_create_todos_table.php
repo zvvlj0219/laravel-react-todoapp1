@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        if (Schema::hasTable('todos')) {
+        if (!Schema::hasTable('todos')) {
             Schema::create('todos', function (Blueprint $table) {
                 $table->id();
                 $table->string('title');
