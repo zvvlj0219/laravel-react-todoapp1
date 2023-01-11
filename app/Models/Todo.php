@@ -14,6 +14,7 @@ class Todo extends Model
         'is_done'
     ];
 
+    // カラムの型を指定 キャストする
     protected $casts = [
         'is_done' => 'bool'
     ];
