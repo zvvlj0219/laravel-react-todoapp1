@@ -13,7 +13,8 @@ class UpdateTodoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // falseだとエラーになる
+        return true;
     }
 
     /**

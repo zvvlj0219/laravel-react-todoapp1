@@ -33,7 +33,7 @@ class TodoController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreTodoRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(StoreTodoRequest $request)
     {
@@ -71,7 +71,7 @@ class TodoController extends Controller
      *
      * @param  \App\Http\Requests\UpdateTodoRequest  $request
      * @param  \App\Models\Todo  $todo
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(UpdateTodoRequest $request, Todo $todo)
     {
@@ -86,10 +86,13 @@ class TodoController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Todo  $todo
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy(Todo $todo)
     {
-        //
+        return $todo->delete()
+        ? response()->json($todo)
+        : response()->json([], 500);
+
     }
 }

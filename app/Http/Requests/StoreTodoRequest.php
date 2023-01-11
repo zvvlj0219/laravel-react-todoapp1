@@ -13,7 +13,8 @@ class StoreTodoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // falseだとエラーになる
+        return true;
     }
 
     /**
@@ -24,7 +25,7 @@ class StoreTodoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required'
         ];
     }
 }
